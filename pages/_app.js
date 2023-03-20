@@ -23,11 +23,18 @@ export default function App({ Component, pageProps }) {
       })
     );
   }
+  const lightCount = lights.map((light) => light.isOn);
+  const countOfLightsTurnedOn = lightCount.reduce((a, b) => a + b);
 
   return (
     <Layout>
       <GlobalStyle />
-      <Component {...pageProps} lights={lights} onToggle={handleToggle} />
+      <Component
+        {...pageProps}
+        lights={lights}
+        onToggle={handleToggle}
+        countOfLightsTurnedOn={countOfLightsTurnedOn}
+      />
     </Layout>
   );
 }
